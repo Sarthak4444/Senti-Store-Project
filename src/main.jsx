@@ -7,8 +7,6 @@ import Product from './Components/Pages/Product'
 import Categories from './Components/Pages/Categories'
 import Wishlist from './Components/Pages/Wishlist'
 import Cart from './Components/Pages/Cart'
-import Error from './components/Pages/Error'
-// import About from './components/Pages/About'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -41,10 +39,7 @@ const router = createBrowserRouter([
         path: '/cart',
         element: <Cart />,
       },
-      // {
-      //   path: '/about',
-      //   element: <About />,
-      // },
+    
     ],
   },
 ])
