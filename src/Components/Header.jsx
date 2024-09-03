@@ -10,7 +10,7 @@ function Header() {
   return (
     <>
     <div className={`${ham ? "absolute" : "hidden"} md:hidden z-30`}>
-      <div className="w-[100vw] h-[100vh] m-6 rounded-2xl p-10  bg-[#3c1b52f9] gap-4 text-xl flex flex-col items-center justify-center">
+      <div className="w-[100vw] h-[100vh]  p-10  bg-[#3c1b52f9] gap-4 text-xl flex flex-col items-center justify-center">
       <p className="text-3xl text-[#751CB4]">MENU</p>
         <NavLink
           className={({ isActive }) =>
