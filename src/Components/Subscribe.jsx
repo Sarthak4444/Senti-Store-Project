@@ -3,7 +3,7 @@ import React from "react";
 function Subscribe() {
   return (
     <div className="flex flex-col items-baseline">
-      <div className="text-[#D1B3C4] text-2xl">
+      <div className="text-[#D1B3C4] text-xl md:text-2xl">
         <i className="fa-regular fa-envelope mr-3"></i>Stay updated on the latest
         fashion
       </div>
