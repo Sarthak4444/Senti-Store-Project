@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define the keyframes using a CSS variable */
+@keyframes slide {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(var(--translate-end, 175%));
+    }
+}
+
+/* Default translation for large screens */
+.element {
+    --translate-end: 175%;
+    animation: slide 10s linear infinite;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .element {
+        --translate-end: 100%;
+        
+    }
+}
+
+/* Media query for very small screens */
+@media (max-width: 480px) {
+    .element {
+        --translate-end: 75%;
+    }
+    
+}
+
+@media (min-width: 768px) {
+    .heroImg {
+        display: none;
+    }
+    
+}
+@media (max-width: 480px) {
+    .heroImg {
+        display: none;
+    }
+    
+}
+ 
+
+.custom-shape-divider-top-1725182161 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1725182161 svg {
+    position: relative;
+    display: block;
+    width: calc(152% + 1.3px);
+    height: 135px;
+}
+
+.custom-shape-divider-top-1725182161 .shape-fill {
+    fill: #af92db;
+}
+
+.custom-shape-divider-bottom-1725182457 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1725182457 svg {
+    position: relative;
+    display: block;
+    width: calc(152% + 1.3px);
+    height: 135px;
+}
+
+.custom-shape-divider-bottom-1725182457 .shape-fill {
+    fill: #AF92DB;
+}
