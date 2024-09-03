@@ -10,12 +10,14 @@ function Header() {
   return (
     <>
     <div className={`${ham ? "absolute" : "hidden"} md:hidden z-30`}>
-      <div className="w-full h-screen bg-[#1F0831] flex flex-col items-center justify-center">
+      <div className="w-[100vw] h-[100vh] m-6 rounded-2xl p-10  bg-[#3c1b52f9] gap-4 text-xl flex flex-col items-center justify-center">
+      <p className="text-3xl text-[#751CB4]">MENU</p>
         <NavLink
           className={({ isActive }) =>
             `${isActive ? "underline" : ""} text-[#b090a2]`
           }
           to="/"
+          onClick={() => setHam(!ham)}
         >
           Home
         </NavLink>
@@ -24,6 +26,7 @@ function Header() {
             `${isActive ? "underline" : ""} text-[#b090a2]`
           }
           to="/store"
+          onClick={() => setHam(!ham)}
         >
           Store
         </NavLink>
@@ -32,6 +35,7 @@ function Header() {
             `${isActive ? "underline" : ""} text-[#b090a2]`
           }
           to="/categories"
+          onClick={() => setHam(!ham)}
         >
           Categories
         </NavLink>
@@ -40,6 +44,7 @@ function Header() {
             `${isActive ? "underline" : ""} text-[#b090a2]`
           }
           to="/cart"
+          onClick={() => setHam(!ham)}
         >
           Cart
         </NavLink>
@@ -48,9 +53,11 @@ function Header() {
             `${isActive ? "underline" : ""} text-[#b090a2]`
           }
           to="/about"
+          onClick={() => setHam(!ham)}
         >
           About
         </NavLink>
+        <button className="text-[#D1B3C4] text-3xl active:bg-[#3c1359]" onClick={() => setHam(!ham)}><i class="fa-regular fa-circle-xmark"></i></button>
        </div>
     </div>
       <div className="flex sticky top-0 z-20 flex-row items-center justify-between bg-[#1F0831] p-3 px-8">
