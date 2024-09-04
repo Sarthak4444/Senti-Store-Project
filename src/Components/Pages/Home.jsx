@@ -41,7 +41,7 @@ function Home() {
                   </button>
                 </Link>
               </div>
-              <span className="heroImg  ml-40 inline-block ">
+              <span className="heroImg  ml-40 relative inline-block ">
                 <img
                   className="absolute transition-all w-[200px] scale-150 -rotate-[20deg] z-10 -ml-20"
                   src={nobgshoe}
@@ -75,7 +75,7 @@ function Home() {
             ></path>
           </svg>
         </div>
-        <div className="flex flex-col justify-center items-center m-auto max-w-[1100px] h-[550px]">
+        <div className="flex flex-col justify-center items-center m-auto max-w-[1100px] h-[750px] md:h-[550px]">
           <p className="text-[#ffffff] m-8 text-center text-5xl mt-14 font-bold">
             <ReactTyped
               strings={["Make your Outfit wonderful"]}

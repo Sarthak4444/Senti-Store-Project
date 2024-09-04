@@ -57,7 +57,7 @@ function Header() {
         >
           About
         </NavLink>
-        <button className="text-[#D1B3C4] text-3xl active:bg-[#3c1359]" onClick={() => setHam(!ham)}><i class="fa-regular fa-circle-xmark"></i></button>
+        <button className="text-[#D1B3C4] text-3xl active:bg-[#3c1359]" onClick={() => setHam(!ham)}><i className="fa-regular fa-circle-xmark"></i></button>
        </div>
     </div>
       <div className="flex sticky top-0 z-20 flex-row items-center justify-between bg-[#1F0831] p-3 px-8">
