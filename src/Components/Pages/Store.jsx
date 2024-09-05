@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Card from "../Card";
 
 function Store() {
-
   const [query, setQuery] = useState("");
   const [allProducts, setAllProducts] = useState([]);
   const [category, setCategory] = useState("");
@@ -13,9 +12,11 @@ function Store() {
   }
 
   useEffect(() => {
-    fetch("https://api.escuelajs.co/api/v1/products")
+    fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
-      .then((data) => setAllProducts(data));
+      .then((data) => {
+        setAllProducts(data);
+      });
   }, []);
 
   if (allProducts.length === 0) {
@@ -26,57 +27,96 @@ function Store() {
     );
   }
 
-  const productArray = allProducts.filter(
-    (product) => category === "" || product.category.name === category
-  ).filter((product) => product.title.toLowerCase().includes(query))
+  const productArray = allProducts
+    .filter((product) => category === "" || product.category === category)
+    .filter((product) => product.title.toLowerCase().includes(query))
     .map((product) => (
       <Card
         key={product.id}
         Name={product.title}
         Price={product.price}
-        Category={product.category.name}
-        Image={product.images[0]}
+        Image={product.image}
+        Category={product.category}
       />
     ));
 
   return (
     <div className="bg-[#af92db]">
+      <div className="lg:hidden">
+        <div className="flex items-center pt-5 justify-center">
+          <input
+            onChange={(e) => handleInput(e.target.value)}
+            type="text"
+            placeholder="Search"
+            className="px-4 py-2 min-w-20 border border-gray-300 rounded-l-lg focus:outline-[#621a96]"
+          />
+          <button className="bg-[#533977] text-[#D1B3C4] px-3 py-2 mr-5 rounded-r-lg hover:bg-[#621a96] active:bg-[#3c1359] ">
+            Search
+          </button>
+        </div>
+      </div>
       <div className="grid grid-cols-4 grid-rows-1 ">
-        <div className="col-span-1 row-span-1 p-8 ">
+        <div className="col-span-1 row-span-1 p-8 lg:block hidden">
           <div className="flex flex-col justify-center">
-            <div>
+            <div className="flex items-center">
               <input
                 onChange={(e) => handleInput(e.target.value)}
                 type="text"
                 placeholder="Search"
-                className="px-4 py-2 border border-gray-300 w-44 rounded-l-lg focus:outline-[#621a96]"
+                className="flex-grow px-4 py-2 min-w-20 border border-gray-300 rounded-l-lg focus:outline-[#621a96]"
               />
-              <button className="bg-[#751CB4] text-[#D1B3C4] px-3 py-2 rounded-r-lg hover:bg-[#621a96] active:bg-[#3c1359] ">
+              <button className="bg-[#533977] text-[#D1B3C4] px-3 py-2 mr-5 rounded-r-lg hover:bg-[#621a96] active:bg-[#3c1359] ">
                 Search
               </button>
             </div>
             <div className="mt-5 border border-[#621a96] mr-5 rounded-2xl bg-violet-500 p-8">
-              <p className="text-2xl mb-4 font-bold text-[#2a272c] ">CATEGORIES</p>
+              <p className="text-2xl mb-4 font-bold text-[#2a272c] ">
+                CATEGORIES
+              </p>
               <div>
-                <button onClick={() => setCategory("Clothes")} className="w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent">Clothes</button>
+                <button
+                  onClick={() => setCategory("")}
+                  className="hover:scale-105  w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent"
+                >
+                  All
+                </button>
               </div>
               <div>
-                <button onClick={() => setCategory("Electronics")} className="w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent">Electronics</button>
+                <button
+                  onClick={() => setCategory("electronics")}
+                  className="hover:scale-105 w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent"
+                >
+                  Electronics
+                </button>
               </div>
               <div>
-                <button onClick={() => setCategory("Shoes")} className="w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent">Shoes</button>
+                <button
+                  onClick={() => setCategory("jewelery")}
+                  className="hover:scale-105 w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent"
+                >
+                  Jewelery
+                </button>
               </div>
               <div>
-                <button onClick={() => setCategory("Furniture")} className="w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent">Furniture</button>
+                <button
+                  onClick={() => setCategory("men's clothing")}
+                  className="hover:scale-105 w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent"
+                >
+                  Men's
+                </button>
               </div>
               <div>
-                <button onClick={() => setCategory("Miscellaneous")} className="w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent">Miscellaneous</button>
+                <button
+                  onClick={() => setCategory("women's clothing")}
+                  className="hover:scale-105 w-full active:bg-gradient-to-r active:from-[#621a96] text-left text-xl text-[#ffffff] mb-4 p-3 rounded-lg bg-gradient-to-r from-[#1F0831] to-transparent"
+                >
+                  Women's
+                </button>
               </div>
             </div>
-            <div></div>
           </div>
         </div>
-        <div className="col-span-3 row-span-1">
+        <div className="place-items-center col-span-4 lg:col-span-3 row-span-1 p-10 border-l-[1px] border-[#1F0831] grid gap-10 xs:grid-cols-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
           {productArray}
         </div>
       </div>

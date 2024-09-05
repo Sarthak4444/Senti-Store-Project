@@ -15,7 +15,7 @@ function Home() {
             <motion.div
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ ease: "easeOut", duration: 1, delay: 0.5 }}
+              transition={{ ease: "easeOut", duration: 1, delay: 0.2 }}
             >
               <p className="text-[#ffffff] text-5xl font-bold">
                 Fashion that <span className="text-[#1F0831]">Empowers</span>
