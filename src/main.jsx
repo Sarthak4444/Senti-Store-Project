@@ -1,49 +1,63 @@
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import App from './App'
-import Home from './Components/Pages/Home'
-import Store from './Components/Pages/Store'
-import Product from './Components/Pages/Product'
-import Categories from './Components/Pages/Categories'
-import Wishlist from './Components/Pages/Wishlist'
-import Cart from './Components/Pages/Cart'
-import './index.css'
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App";
+import Home from "./Components/Pages/Home";
+import Store from "./Components/Pages/Store";
+import Product from "./Components/Pages/Product";
+import Wishlist from "./Components/Pages/Wishlist";
+import Cart from "./Components/Pages/Cart";
+import About from "./Components/Pages/About";
+import cartReducer from "./Redux/CartSlices";
+import wishlistReducer from "./Redux/WishlistSlices";
+import { Provider } from "react-redux";
+import "./index.css";
+import { configureStore } from "@reduxjs/toolkit";
+
+const store = configureStore({
+  reducer: {
+    cart: cartReducer,
+    wishlist: wishlistReducer,
+  },
+});
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     errorElement: <Error />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: '/store',
+        path: "/store",
         element: <Store />,
       },
       {
-        path: '/product',
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/:product",
         element: <Product />,
       },
       {
-        path: '/categories',
-        element: <Categories />,
-      },
-      {
-        path: '/wishlist',
+        path: "/wishlist",
         element: <Wishlist />,
       },
       {
-        path: '/cart',
+        path: "/cart",
         element: <Cart />,
       },
-    
     ],
   },
-])
+]);
 
-const root = createRoot(document.querySelector('#root'))
+const root = createRoot(document.querySelector("#root"));
 
-root.render(<RouterProvider router={router} />)
+root.render(
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+);

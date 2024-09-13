@@ -89,9 +89,9 @@ function Header() {
             className={({ isActive }) =>
               `${isActive ? "underline" : ""} active:text-[#b090a2]`
             }
-            to="/categories"
+            to="/wishlist"
           >
-            Categories
+            Wishlist
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -111,9 +111,6 @@ function Header() {
           </NavLink>
         </div>
         <div className="flex flex-row items-center">
-          <button>
-            <i className="fa-solid fa-heart text-[#D1B3C4] text-[30px] mr-4"></i>
-          </button>
           <button>
             <i className="fa-solid fa-circle-user text-[#D1B3C4] text-[29px]"></i>
           </button>

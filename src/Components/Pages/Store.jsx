@@ -37,6 +37,7 @@ function Store() {
         Price={product.price}
         Image={product.image}
         Category={product.category}
+        Id={product.id}
       />
     ));
 
