@@ -1,24 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+import { loadState } from '../LocalStorage'; 
 
-const initialState = {
-  wishlist: 0
-}
+const defaultState = {
+  wishlistItems: [],
+};
+
+const persistedState = loadState()?.wishlist || defaultState; 
 
 export const wishlistSlice = createSlice({
-  name: 'wishlist',
-  initialState,
+  name: "wishlist",
+  initialState: persistedState,
   reducers: {
-    increment: (state) => {
-
-      state.wishlist += 1
+    addToWishlist: (state, action) => {
+      state.wishlistItems.push(action.payload);
     },
-    decrement: (state) => {
-      state.wishlist -= 1
+    removeFromWishlist: (state, action) => {
+      state.wishlistItems = state.wishlistItems.filter(
+        (item) => item !== action.payload
+      );
     },
-
   },
-})
+});
 
-export const { increment, decrement } = wishlistSlice.actions
+export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
 
-export default wishlistSlice.reducer
+export default wishlistSlice.reducer;

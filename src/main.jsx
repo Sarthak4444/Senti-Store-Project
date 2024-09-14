@@ -12,12 +12,21 @@ import wishlistReducer from "./Redux/WishlistSlices";
 import { Provider } from "react-redux";
 import "./index.css";
 import { configureStore } from "@reduxjs/toolkit";
+import { loadState, saveState } from "./LocalStorage";
 
 const store = configureStore({
   reducer: {
     cart: cartReducer,
     wishlist: wishlistReducer,
   },
+});
+
+store.subscribe(() => {
+  const { cart, wishlist } = store.getState();
+  saveState({
+    cart,
+    wishlist,
+  });
 });
 
 const router = createBrowserRouter([
