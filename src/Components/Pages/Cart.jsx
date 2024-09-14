@@ -8,9 +8,7 @@ function Cart() {
 
   return (
     <div>
-     {cart.cartItems}
-     <br />
-     {wishlist.wishlistItems}
+      
     </div>
   )
 }

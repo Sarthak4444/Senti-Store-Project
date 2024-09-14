@@ -34,10 +34,10 @@ function Header() {
           className={({ isActive }) =>
             `${isActive ? "underline" : ""} text-[#b090a2]`
           }
-          to="/categories"
+          to="/wishlist"
           onClick={() => setHam(!ham)}
         >
-          Categories
+          Wishlist
         </NavLink>
         <NavLink
           className={({ isActive }) =>
