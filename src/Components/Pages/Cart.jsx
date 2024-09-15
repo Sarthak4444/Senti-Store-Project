@@ -145,27 +145,27 @@ function Cart() {
              
               <div>{productArray}</div>
             </div>
-            <div className="border-4 border-[#1F0831] rounded-2xl p-10">
+            <div className="border-4 border-[#1F0831] rounded-2xl p-5 md:p-10">
               <div className="flex flex-col gap-5 pb-6 mb-6 border-b-2 border-[#1F083158]">
-                <div className="flex flex-row items-center justify-between text-2xl md:text-3xl font-[#1F0831] font-semibold">
+                <div className="flex flex-row items-center justify-between text-xl md:text-3xl font-[#1F0831] font-semibold">
                   <p>Subtotal:</p>
                   <p>${subTotalPrice.toFixed(2)}</p>
                 </div>
-                <div className="flex flex-row items-center justify-between text-2xl md:text-3xl font-[#1F0831] font-semibold">
+                <div className="flex flex-row items-center justify-between text-xl md:text-3xl font-[#1F0831] font-semibold">
                   <p>Shipping:</p>
                   <p>$5.00</p>
                 </div>
-                <div className="flex flex-row items-center justify-between text-2xl md:text-3xl font-[#1F0831] font-semibold">
+                <div className="flex flex-row items-center justify-between text-xl md:text-3xl font-[#1F0831] font-semibold">
                   <p>Tax(8%):</p>
                   <p>${tax.toFixed(2)}</p>
                 </div>
-                <div className="flex flex-row items-center justify-between text-2xl md:text-3xl font-[#1F0831] font-semibold">
+                <div className="flex flex-row items-center justify-between text-xl md:text-3xl font-[#1F0831] font-semibold">
                   <p>Discount:</p>
                   <p>${discount.toFixed(2)}</p>
                 </div>
               </div>
               <div>
-                <div className="flex flex-row items-center justify-between text-2xl md:text-3xl font-[#1F0831] font-bold">
+                <div className="flex flex-row items-center justify-between text-xl md:text-3xl font-[#1F0831] font-bold">
                   <p>Grand Total:</p>
                   <p>${(grandTotal + tax - discount + 5).toFixed(2)}</p>
                 </div>
