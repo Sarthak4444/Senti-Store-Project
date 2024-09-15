@@ -118,7 +118,7 @@ function Header() {
       </div>
       <div className="bg-[#ffa24a] overflow-hidden">
         <div className="element inline-block whitespace-nowrap lg:text-[18px] text-[12px] font-medium tracking-widest font-sans align-middle text-center">
-          GET 50% DISCOUNT ON A MIN ORDER OF ₹999/-
+          GET 40% DISCOUNT ON A MIN ORDER OF $399
         </div>
       </div>
     </>

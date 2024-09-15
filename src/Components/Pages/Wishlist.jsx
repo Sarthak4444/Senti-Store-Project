@@ -42,7 +42,7 @@ function Wishlist() {
         <div className="flex flex-col items-center justify-center min-h-[80vh] bg-[#af92db]">
           <i className="fa-solid fa-triangle-exclamation text-3xl font-bold text-gray-900"></i>
           <p className="text-3xl pt-5 font-bold text-gray-900">
-            Wishlist Empty
+            Wishlist is Empty
           </p>
           <Link to="/store">
           <button className="bg-[#1F0831] hover:scale-105 transition-all mt-8 text-xl md:text-2xl text-[#ffffff] px-10 py-4 rounded-full hover:bg-[#3c1359] active:bg-[#621a96] ">

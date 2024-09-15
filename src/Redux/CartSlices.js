@@ -15,9 +15,7 @@ export const cartSlice = createSlice({
       state.cartItems.push(action.payload);
     },
     decrement: (state, action) => {
-      state.cartItems = state.cartItems.filter(
-        (item) => item !== action.payload
-      );
+      state.cartItems.pop(action.payload);
     },
     removeItem: (state, action) => {
       state.cartItems = state.cartItems.filter(
