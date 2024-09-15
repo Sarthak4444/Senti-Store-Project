@@ -6,7 +6,7 @@ import Subscribe from "./Subscribe";
 function Footer() {
   return (
     <div className="items-center bg-[#1F0831] p-3">
-      <div className="flex flex-row items-center justify-between px-2 md:px-44">
+      <div className="flex flex-row items-center justify-between px-2 md:px-20 lg:px-44">
         <div>
           <NavLink to="/" className="flex flex-row items-center">
             <img className="w-[60px]" src={Logo} alt="Logo" />
@@ -20,7 +20,7 @@ function Footer() {
             <i className="cursor-pointer fa-brands fa-youtube text-[#D1B3C4]"></i>
           </div>
         </div>
-        <div>
+        <div className="ml-2 md:ml-0">
           <Subscribe />
         </div>
       </div>

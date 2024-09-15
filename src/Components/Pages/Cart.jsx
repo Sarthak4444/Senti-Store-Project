@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
-import { increment, decrement, removeItem } from "../../Redux/CartSlices";
+import { motion } from 'framer-motion';
+import { increment, decrement, removeItem, clearCart } from "../../Redux/CartSlices";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -13,6 +13,37 @@ function Cart() {
   const [discount, setDiscount] = useState(0);
   const [tax, setTax] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    setTimeout(() => {
+      setIsOpen(false);
+      dispatch(clearCart());
+    }, 2000);
+  };
+
+  const menuVariants = {
+    open: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      },
+    },
+    closed: {
+      opacity: 0,
+      scale: 0.8,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      },
+    },
+  };
 
   const handleIncrement = (product) => {
     dispatch(increment(product));
@@ -72,8 +103,7 @@ function Cart() {
       setDiscount(0);
       setGrandTotal(subTotalPrice);
     }
-    
-  },[subTotalPrice])
+  }, [subTotalPrice]);
 
   const productArray = uniqueCartItems.map((product) => (
     <div
@@ -109,7 +139,9 @@ function Cart() {
           >
             <i className="fa-solid fa-minus"></i>
           </button>
-          <p className="md:p-2 p-1 text-sm md:text-lg bg-white text-[#1F0831] md:py-1">{product.quantity}</p>
+          <p className="md:p-2 p-1 text-sm md:text-lg bg-white text-[#1F0831] md:py-1">
+            {product.quantity}
+          </p>
           <button
             onClick={() => handleIncrement(product.id)}
             className="bg-[#1F0831] text-sm md:text-lg active:scale-75 transition-all text-white p-1 md:p-2 md:py-1 rounded-r-lg"
@@ -142,7 +174,6 @@ function Cart() {
         ) : (
           <div className="grid lg:grid-cols-3">
             <div className="lg:col-span-2">
-             
               <div>{productArray}</div>
             </div>
             <div className="border-4 border-[#1F0831] rounded-2xl p-5 md:p-10">
@@ -169,9 +200,21 @@ function Cart() {
                   <p>Grand Total:</p>
                   <p>${(grandTotal + tax - discount + 5).toFixed(2)}</p>
                 </div>
-                <button className="bg-[#1F0831] hover:scale-105 transition-all mt-8 text-xl md:text-2xl text-[#ffffff] px-10 py-4 rounded-full hover:bg-[#3c1359] active:bg-[#621a96] w-full">
-                  Check Out
+                <button
+                  onClick={toggleMenu}
+                  className="bg-[#1F0831] hover:scale-105 transition-all mt-8 text-xl md:text-2xl text-[#ffffff] px-10 py-4 rounded-full hover:bg-[#3c1359] active:bg-[#621a96] w-full"
+                >
+                  Place Order
                 </button>
+                <motion.div
+                  initial="closed"
+                  animate={isOpen ? "open" : "closed"}
+                  variants={menuVariants}
+                  className="absolute bottom-10 right-10 z-50 w-48 flex flex-row items-center justify-center bg-white shadow-lg rounded-lg p-4"
+                >
+                  <i className="fa-solid fa-check bg-[#1F0831] rounded-full p-2 py-1 text-white text-lg"></i>
+                  <p className="text-[#1F0831] text-xl ml-2">Thank you!</p>
+                </motion.div>
               </div>
             </div>
           </div>
