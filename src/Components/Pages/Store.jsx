@@ -1,6 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Card from "../Card";
+import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Store() {
   const [query, setQuery] = useState("");
@@ -10,6 +13,42 @@ function Store() {
   function handleInput(value) {
     setQuery(value.toLowerCase());
   }
+
+  const cart = useSelector((state) => state.cart.cartItems);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    if (cart.length > 0) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
+  const menuVariants = {
+    open: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      },
+    },
+    closed: {
+      opacity: 0,
+      scale: 0.8,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      },
+    },
+  };
+
+  useEffect(() => {
+    toggleMenu();
+  }, [cart]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -43,6 +82,20 @@ function Store() {
 
   return (
     <div className="bg-[#af92db]">
+      <Link to="/cart">
+        <motion.div
+          initial="closed"
+          animate={isOpen ? "open" : "closed"}
+          variants={menuVariants}
+          className="absolute bottom-40 right-10 z-50 cursor-pointer bg-white shadow-lg rounded-full p-4"
+        >
+          <i className="fa-solid fa-cart-shopping relative text-[#1F0831] text-3xl">
+            <p className="text-white bg-red-600 rounded-full flex items-center justify-center p-1 px-2 -top-2 -right-2 text-xs absolute">
+              {cart.length}
+            </p>
+          </i>
+        </motion.div>
+      </Link>
       <div className="lg:hidden">
         <div className="flex items-center pt-5 justify-center">
           <input
