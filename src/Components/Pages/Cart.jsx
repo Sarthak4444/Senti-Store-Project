@@ -108,7 +108,7 @@ function Cart() {
   const productArray = uniqueCartItems.map((product) => (
     <div
       key={product.id}
-      className="grid grid-cols-6 border-t-2 border-[#1F083158]"
+      className="grid grid-cols-6"
     >
       <div className="col-span-4 flex flex-row  p-4">
         <Link to={`/${product.id}`}>
@@ -127,7 +127,7 @@ function Cart() {
           }
         </p>
       </div>
-      <div className="col-span-1 border-x-2 p-4 items-center justify-center flex border-[#1f083158]">
+      <div className="col-span-1 p-4 items-center justify-center flex">
         <div className="flex flex-row items-center justify-center">
           <button
             onClick={() =>
