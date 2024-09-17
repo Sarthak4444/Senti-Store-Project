@@ -53,7 +53,7 @@ function Subscribe() {
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={menuVariants}
-        className="absolute bottom-16  right-10 z-50 w-auto flex flex-row items-center justify-center bg-white shadow-lg rounded-lg p-4"
+        className={`absolute bottom-16 ${isOpen ? "block" : "hidden"} right-10 z-50 w-auto flex flex-row items-center justify-center bg-white shadow-lg rounded-lg p-4`}
       >
         <i className="fa-solid fa-check bg-[#1F0831] rounded-full p-2 py-1 text-white text-lg"></i>
         <p className="text-[#1F0831] text-xl ml-2">Thank you for subscribing!</p>
