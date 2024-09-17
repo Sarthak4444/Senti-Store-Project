@@ -35,7 +35,7 @@ export function Card(props) {
   return (
     <div className="hover:scale-105 active:scale-100 transition-all max-w-xs border-[#1F0831] border-[1px] rounded-2xl shadow-2xl p-5 bg-[#533977]">
       <Link to={`/${Id}`}>
-        <img src={Image} alt="product" className="rounded-2xl w-full h-40" />
+        <img src={Image} alt="product" className="rounded-2xl w-[100%] h-40" />
       </Link>
 
       <h3
