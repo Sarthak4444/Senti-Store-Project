@@ -170,7 +170,7 @@ function Store() {
             </div>
           </div>
         </div>
-        <div className="place-items-center col-span-4 lg:col-span-3 row-span-1 p-10 border-l-[1px] border-[#1F0831] grid gap-10 xs:grid-cols-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="place-items-center col-span-4 lg:col-span-3 row-span-1 p-10 border-l-[1px] border-[#1F0831] grid gap-10  xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
           {productArray}
         </div>
       </div>
